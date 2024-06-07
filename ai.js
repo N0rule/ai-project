@@ -4,7 +4,7 @@ require("module-alias/register");
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-const { Loggerlog, LoggerWarn, LoggerError } = require('@handlers/logger');
+const { Loggerlog, LoggerWarn, LoggerError } = require("@handlers/logger");
 
 const { aiChat } = require("@handlers/chatGen");
 const { validateConfiguration } = require("@handlers/validator");
@@ -36,7 +36,7 @@ app.post("/api/chat", async (req, res) => {
 (async () => {
   app.listen(port, async () => {
     Loggerlog(`Server is running on http://localhost:${port}`);
-    const open = await import('open'); // Use dynamic import here
+    const open = await import("open"); // Use dynamic import here
     open.default(`http://localhost:${port}`); // Use open.default since it's the default export
   });
 })();

@@ -5,7 +5,8 @@
   "main": "ai.js",
   "scripts": {
     "dev": "nodemon .",
-    "start": "node ."
+    "start": "node .",
+    "format": "prettier --write ."
   },
   "keywords": [
     "ai",
@@ -28,6 +29,7 @@
     "open": "^10.1.0",
     "openai": "^4.49.0",
     "pino": "^9.1.0",
-    "pino-pretty": "^11.1.0"
+    "pino-pretty": "^11.1.0",
+    "prettier": "^3.3.1"
   }
 }

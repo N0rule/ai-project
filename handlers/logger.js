@@ -14,7 +14,7 @@ const pinoLogger = pino.default(
       hideObject: false,
       customColors: "info:blue,warn:yellow,error:red",
     },
-  })
+  }),
 );
 
 module.exports = class Logger {
