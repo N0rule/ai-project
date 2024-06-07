@@ -52,6 +52,10 @@ body {
 .bot-message {
   background-color: rgb(55, 0, 107);
   text-align: right;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  margin-right: 10px; /* Adjust the margin value to increase or decrease the gap */
 }
 
 .input-container {
@@ -116,8 +120,7 @@ button:hover {
 .message-container {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 5px;
-  margin-top: 5px;
+  margin: 5px 0; /* Top and bottom margins */
 }
 
 .avatar-container {
@@ -144,6 +147,10 @@ button:hover {
   word-wrap: break-word;
 }
 
+.animated-message {
+  animation: fadeIn 0.5s ease-out;
+}
+
 .user-message-container {
   justify-content: flex-start;
   animation: fadeIn 0.5s ease-out;
@@ -160,14 +167,6 @@ button:hover {
 .bot-message-container {
   justify-content: flex-end;
   animation: fadeIn 0.8s ease-out;
-}
-
-.bot-message {
-  background-color: rgb(55, 0, 107);
-  border-radius: 5px;
-  padding: 10px;
-  color: #fff;
-  margin-right: 10px; /* Adjust the margin value to increase or decrease the gap */
 }
 
 input[type="text"].disabled {
