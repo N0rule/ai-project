@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,99 +24,101 @@
           }
         });
 
-        async function sendMessage() {
-  const userInput = document.getElementById("userInput").value;
-  if (!userInput) return;
+      async function sendMessage() {
+        const userInput = document.getElementById("userInput").value;
+        if (!userInput) return;
 
-  // Get reference to the input field
-  const inputField = document.getElementById("userInput");
+        // Get reference to the input field
+        const inputField = document.getElementById("userInput");
 
-  // Disable the input field
-  inputField.disabled = true;
-  inputField.classList.add("disabled");
+        // Disable the input field
+        inputField.disabled = true;
+        inputField.classList.add("disabled");
 
-  // Get reference to the messages container
-  const messagesDiv = document.getElementById("messages");
+        // Get reference to the messages container
+        const messagesDiv = document.getElementById("messages");
 
-  // Display user's message with avatar
-  const userMessageContainer = document.createElement("div");
-  userMessageContainer.className = "message-container user-message-container";
-  const userAvatarDiv = document.createElement("div");
-  userAvatarDiv.className = "avatar-container";
-  userAvatarDiv.innerHTML = `<img src="/avatars/userAvatar.jpg" class="avatar">`;
-  const userMessageDiv = document.createElement("div");
-  userMessageDiv.className = "message user-message";
-  userMessageDiv.textContent = userInput;
-  userMessageContainer.appendChild(userAvatarDiv);
-  userMessageContainer.appendChild(userMessageDiv);
-  messagesDiv.appendChild(userMessageContainer);
+        // Display user's message with avatar
+        const userMessageContainer = document.createElement("div");
+        userMessageContainer.className =
+          "message-container user-message-container";
+        const userAvatarDiv = document.createElement("div");
+        userAvatarDiv.className = "avatar-container";
+        userAvatarDiv.innerHTML = `<img src="/avatars/userAvatar.jpg" class="avatar">`;
+        const userMessageDiv = document.createElement("div");
+        userMessageDiv.className = "message user-message";
+        userMessageDiv.textContent = userInput;
+        userMessageContainer.appendChild(userAvatarDiv);
+        userMessageContainer.appendChild(userMessageDiv);
+        messagesDiv.appendChild(userMessageContainer);
 
-  // Clear input
-  inputField.value = "";
+        // Clear input
+        inputField.value = "";
 
-  // Display "responding..." message
-  const respondingMessageContainer = document.createElement("div");
-  respondingMessageContainer.className = "message-container bot-message-container responding";
-  const respondingMessageDiv = document.createElement("div");
-  respondingMessageDiv.className = "message bot-message";
-  respondingMessageDiv.textContent = "Answering";
-  const botAvatarDiv = document.createElement("div");
-  botAvatarDiv.className = "avatar-container";
-  botAvatarDiv.innerHTML = `<img src="/avatars/avatar.png" class="avatar">`;
-  respondingMessageContainer.appendChild(respondingMessageDiv);
-  respondingMessageContainer.appendChild(botAvatarDiv);
-  messagesDiv.appendChild(respondingMessageContainer);
+        // Display message
+        const respondingMessageContainer = document.createElement("div");
+        respondingMessageContainer.className =
+          "message-container bot-message-container responding";
+        const respondingMessageDiv = document.createElement("div");
+        respondingMessageDiv.className = "message bot-message";
+        respondingMessageDiv.textContent = "Answering";
+        const botAvatarDiv = document.createElement("div");
+        botAvatarDiv.className = "avatar-container";
+        botAvatarDiv.innerHTML = `<img src="/avatars/avatar.png" class="avatar">`;
+        respondingMessageContainer.appendChild(respondingMessageDiv);
+        respondingMessageContainer.appendChild(botAvatarDiv);
+        messagesDiv.appendChild(respondingMessageContainer);
 
-  // Scroll to the bottom
-  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        // Scroll to the bottom
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
-  // Animation for adding dots
-  const dotsInterval = setInterval(() => {
-    if (respondingMessageDiv.textContent.length === 13) {
-      respondingMessageDiv.textContent = "Responding";
-    } else {
-      respondingMessageDiv.textContent += ".";
-    }
-  }, 500);
+        // Animation for adding dots
+        const dotsInterval = setInterval(() => {
+          if (respondingMessageDiv.textContent.length === 13) {
+            respondingMessageDiv.textContent = "Answering";
+          } else {
+            respondingMessageDiv.textContent += ".";
+          }
+        }, 500);
 
-  // Send message to server
-  const response = await fetch("/api/chat", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ message: userInput }),
-  });
+        // Send message to server
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: userInput }),
+        });
 
-  const data = await response.json();
+        const data = await response.json();
 
-  // Clear the dots animation
-  clearInterval(dotsInterval);
+        // Clear the dots animation
+        clearInterval(dotsInterval);
 
-  // Remove the "responding..." message
-  messagesDiv.removeChild(respondingMessageContainer);
+        // Remove the message
+        messagesDiv.removeChild(respondingMessageContainer);
 
-  // Display bot's response with avatar
-  const botMessageContainer = document.createElement("div");
-  botMessageContainer.className = "message-container bot-message-container";
-  const botMessageDiv = document.createElement("div");
-  botMessageDiv.className = "message bot-message";
-  botMessageDiv.textContent = data.response;
-  botMessageContainer.appendChild(botMessageDiv);
-  botMessageContainer.appendChild(botAvatarDiv);
-  messagesDiv.appendChild(botMessageContainer);
+        // Display bot's response with avatar
+        const botMessageContainer = document.createElement("div");
+        botMessageContainer.className =
+          "message-container bot-message-container";
+        const botMessageDiv = document.createElement("div");
+        botMessageDiv.className = "message bot-message";
+        botMessageDiv.textContent = data.response;
+        botMessageContainer.appendChild(botMessageDiv);
+        botMessageContainer.appendChild(botAvatarDiv);
+        messagesDiv.appendChild(botMessageContainer);
 
-  // Scroll to the bottom
-  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        // Scroll to the bottom
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
-  // Re-enable the input field
-  inputField.disabled = false;
-  inputField.classList.remove("disabled");
+        // Re-enable the input field
+        inputField.disabled = false;
+        inputField.classList.remove("disabled");
 
-// Focus on the input field
-inputField.focus();
-
-}
+        // Focus on the input field
+        inputField.focus();
+      }
     </script>
   </body>
 </html>

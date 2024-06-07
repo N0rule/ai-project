@@ -1,6 +1,6 @@
 const { AICHAT } = require("@root/config.js");
 const { OpenAI } = require("openai");
-const { Loggerlog, LoggerWarn, LoggerError } = require('@handlers/logger');
+const { Loggerlog, LoggerWarn, LoggerError } = require("@handlers/logger");
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
