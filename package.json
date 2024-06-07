@@ -1,0 +1,33 @@
+{
+  "name": "ai-project",
+  "version": "1.0.0",
+  "description": "ai bot that can generate responses and voice them (hopefully)",
+  "main": "ai.js",
+  "scripts": {
+    "dev": "nodemon .",
+    "start": "node ."
+  },
+  "keywords": [
+    "ai",
+    "chatgpt",
+    "character",
+    "voice"
+  ],
+  "author": "N0rule",
+  "license": "ISC",
+  "_moduleAliases": {
+    "@root": ".",
+    "@handlers": "handlers/"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "module-alias": "^2.2.3",
+    "nodemon": "^3.1.3",
+    "open": "^10.1.0",
+    "openai": "^4.49.0",
+    "pino": "^9.1.0",
+    "pino-pretty": "^11.1.0"
+  }
+}

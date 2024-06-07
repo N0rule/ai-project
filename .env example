@@ -1,0 +1,3 @@
+# OpenAI Token
+OPENAI_API_BASE= # URL For api, Default is https://api.openai.com/v1
+OPENAI_API_KEY= #  Your Api key
